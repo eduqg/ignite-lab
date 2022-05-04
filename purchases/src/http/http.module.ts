@@ -7,7 +7,10 @@ import { ConfigModule } from '@nestjs/config';
 import { GraphQLModule } from '@nestjs/graphql';
 import { DatabaseModule } from '../database/database.module';
 import path from 'node:path';
-import { TestResolver } from './test.resolver';
+import { ProductsResolver } from './graphql/resolvers/products.resolver';
+import { ProductsService } from 'src/services/products.service';
+import { PurchasesResolver } from './graphql/resolvers/purchases.resolver';
+import { PurchasesService } from 'src/services/purchases.service';
 
 @Module({
   imports: [
@@ -18,6 +21,14 @@ import { TestResolver } from './test.resolver';
       autoSchemaFile: path.resolve(process.cwd(), 'src/schema.gql'),
     }),
   ], // para acessar variaveis de ambiente
-  providers: [TestResolver],
+  providers: [
+    // Resolvers
+    ProductsResolver,
+    PurchasesResolver,
+
+    // Services
+    ProductsService,
+    PurchasesService,
+  ],
 })
 export class HttpModule {}
