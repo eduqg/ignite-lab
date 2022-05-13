@@ -22,8 +22,44 @@ directive @inaccessible on FIELD_DEFINITION | OBJECT | INTERFACE | UNION | ARGUM
 
 directive @override(from: String!) on FIELD_DEFINITION
 
+type Course {
+  id: ID!
+  title: String!
+  slug: String!
+}
+
+type User {
+  authUserId: ID!
+  enrollments: [Enrollment!]!
+}
+
+type Enrollment {
+  id: ID!
+  student: User!
+  course: Course!
+  canceledAt: DateTime
+  createdAt: DateTime!
+}
+
+"""
+A date-time string at UTC, such as 2019-12-03T09:54:33Z, compliant with the date-time format.
+"""
+scalar DateTime
+
 type Query {
-  hello: String!
+  courses: [Course!]!
+  course(id: String!): Course!
+  enrollments: [Enrollment!]!
+  me: User!
+  students: [User!]!
+}
+
+type Mutation {
+  createCourse(data: CreateCourseInput!): Course!
+}
+
+input CreateCourseInput {
+  title: String!
 }
 
 scalar link__Import

@@ -1,8 +1,6 @@
 import { Field, ID, ObjectType, registerEnumType } from '@nestjs/graphql';
 import { Product } from './product';
 
-// Colocar informações relevantes para o front
-
 enum PurchaseStatus {
   PENDING = 'PENDING',
   APPROVED = 'APPROVED',
@@ -11,7 +9,7 @@ enum PurchaseStatus {
 
 registerEnumType(PurchaseStatus, {
   name: 'PurchaseStatus',
-  description: 'Available purchases statuses',
+  description: 'Available purchase statuses',
 });
 
 @ObjectType()
@@ -28,6 +26,5 @@ export class Purchase {
   @Field(() => Product)
   product: Product;
 
-  // Não colocar field para frontend nao buscar, meu backend sabe que existe
   productId: string;
 }

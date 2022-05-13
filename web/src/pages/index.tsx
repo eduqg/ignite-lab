@@ -14,12 +14,17 @@ export default function Home() {
   //   </div>
   // )
 
-  return null;
+  
+
+  return <h1>Home</h1>;
 }
 
 export const getServerSideProps: GetServerSideProps = async ({req, res}) => {
   const session = getSession(req, res);
-  // const token = getAccessToken(req, res);
+
+
+  const token = getAccessToken(req, res);
+  console.log({token})
 
   if(!session) {
     return {
