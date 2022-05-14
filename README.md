@@ -112,8 +112,56 @@ npm install @apollo/subgraph
  em localhost:3331/grapql aparece insomnia do grapql
 
 
+## Apollo Federation
 
+Cria um gateway, que basicamente faz com que o frontend se comunique com uma url e gateway se comunica com quem for necessário.
+
+Gateway faz um serviço de proxy. Para preencher o valor final para a web.
+
+Gateway (localhost:3332/) PROXY
+
+Purchases (localhost:3331/) purchases.rocketseat.com.br
+Classroom (localhost:3334/) classrooom.rocketseat.com.br
+
+
+Normalmente seria
+
+localhost:3331/graphql
 ```console
+query {
+  me {
+    purchases {
+      id
+    }
+  }
+}
+```
+
+localhost:3333/graphql
+```console
+query {
+  me {
+    enrollments {
+      id
+    }
+  }
+}
+```
+
+Com Gateway, com a mesma query me posso buscar enrollments e purchases
+
+localhost:3332/graphql
+```console
+query {
+  me {
+    purchases {
+      id
+    }
+    enrollments {
+      id
+    }
+  }
+}
 ```
 
 
