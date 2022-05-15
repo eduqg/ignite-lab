@@ -14,28 +14,31 @@ export default function Home() {
   //   </div>
   // )
 
-  
+
 
   return <h1>Home</h1>;
 }
 
-export const getServerSideProps: GetServerSideProps = async ({req, res}) => {
+export const getServerSideProps: GetServerSideProps = async ({ req, res }) => {
   const session = getSession(req, res);
 
 
   const token = getAccessToken(req, res);
-  console.log({token})
+  console.log({ token })
 
-  if(!session) {
+  if (!session) {
     return {
       redirect: {
-        destination: '/api/auth/login', 
+        destination: '/api/auth/login',
         permanent: false
       }
     }
-  }
-
-  return {
-    props: {}
+  } else {
+    return {
+      redirect: {
+        destination: '/app',
+        permanent: false
+      }
+    }
   }
 }
