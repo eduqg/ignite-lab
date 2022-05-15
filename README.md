@@ -164,22 +164,30 @@ query {
 }
 ```
 
-
+Trocar driver
 ```console
+npm install @apollo/federation 
 ```
 
+Criacao do gateway
 
 ```console
+nest new gateway
 ```
 
-
 ```console
+npm i @apollo/gateway @nestjs/graphql @nestjs/apollo 
+npm i apollo-server-express 
 ```
+
+Talvez precise colocar em purchases e classroom
 ```console
+npm i graphql@15
 ```
 
-
+Para adicionar anotações na parte superior do schema.gql
 ```console
+npm install @apollo/federation --force
 ```
 
 

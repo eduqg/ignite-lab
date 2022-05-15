@@ -31,6 +31,7 @@ export class CustomersResolver {
     return this.purchasesService.listAllFromCustomer(customer.id);
   }
 
+  // Serviço Main, poderia ser um servico de autenticação, mas estamos usando auth0
   @ResolveReference()
   resolveReference(reference: { authUserId: string }) {
     return this.customersService.getCustomerByAuthUserId(reference.authUserId);

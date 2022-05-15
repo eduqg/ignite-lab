@@ -9,7 +9,7 @@ import {
 import { EnrollmentsService } from '../../../services/enrollments.service';
 import { StudentsService } from '../../../services/students.service';
 import { AuthorizationGuard } from '../../auth/authorization.guard';
-import { AuthUser, CurrentUser } from '../../auth/current-user';
+// import { AuthUser, CurrentUser } from '../../auth/current-user';
 import { Student } from '../models/student';
 
 @Resolver(() => Student)
@@ -19,11 +19,12 @@ export class StudentsResolver {
     private enrollmentsService: EnrollmentsService,
   ) {}
 
-  @Query(() => Student)
-  @UseGuards(AuthorizationGuard)
-  me(@CurrentUser() user: AuthUser) {
-    return this.studentsService.getStudentByAuthUserId(user.sub);
-  }
+  // Não é mais necessário pois a informação vem de purchases authUserId
+  // @Query(() => Student)
+  // @UseGuards(AuthorizationGuard)
+  // me(@CurrentUser() user: AuthUser) {
+  //   return this.studentsService.getStudentByAuthUserId(user.sub);
+  // }
 
   @Query(() => [Student])
   @UseGuards(AuthorizationGuard)
