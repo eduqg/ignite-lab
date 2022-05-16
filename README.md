@@ -1,5 +1,8 @@
 # Ignite lab
 
+<img src="./enroll.png" alt="Realizar Matrícula" />
+<img src="./my-courses.png" alt="Meus Cursos" />
+
 ## Auth0
 
 Criar conta
@@ -190,20 +193,44 @@ Para adicionar anotações na parte superior do schema.gql
 npm install @apollo/federation --force
 ```
 
+# Web
+
+Para fazer requisições, não vamos usar axios, pois ele deixa muito solto o que pode ser passado para ele.
+
+Apollo, relay, urql são alternativas para realizar as requisições. Vamos usar apollo.
 
 ```console
+yarn add graphql@15 @apollo/client 
 ```
 
+Codegen no front, graphql codegenerator
+Le querys graphql e gera códigos prontos com hooks de uma maneira automatizada
+Mover queries para graphql queries
 
 ```console
+yarn add @graphql-codegen/cli @graphql-codegen/import-types-preset @graphql-codegen/typescript @graphql-codegen/typescript-operations @graphql-codegen/typescript-react-apollo graphql-codegen-apollo-next-ssr -D
 ```
 
+Utilizar yarn generate para criar queries com typescript. Copiar codegen.yml e criar pastas private e public
+
+
+Para autenticação server side, auth0
+```console
+ yarn add next-http-proxy-middleware
+```
+
+Tailwind
 
 ```console
-```
-```console
+yarn add tailwindcss postcss autoprefixer -D
+npx tailwindcss init -p
+yarn add @headlessui/react @heroicons/react
+yarn add @tailwindcss/forms @tailwindcss/aspect-ratio -D
 ```
 
+Também existe Radix
+
+Shimmer Loading widget acts as a skeleton layout.
 
 ```console
 ```
